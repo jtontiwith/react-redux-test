@@ -1,0 +1,13 @@
+.photo-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+div {
+  margin-left: 10px;
+}

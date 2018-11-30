@@ -3,28 +3,43 @@ import { connect } from 'react-redux';
 import './Board.css';
 import SearchForm from './SearchForm';
 import Photo from './Photo';
-import { userSearch, fetchPhotos } from '../Actions';
+import { fetchPhotos } from '../Actions';
 
 export class Board extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   //what about constructor super etc it's absense doesn't change anything.
 
   userSearch = (searchText) => {
-    console.log(searchText)   
-    this.props.dispatch(userSearch(searchText));
-    this.props.dispatch(fetchPhotos());
+    this.props.dispatch(fetchPhotos(searchText));
   }
   
   render() {
+    let output;
+    if(this.props.photos.length > 0) {
+      output = this.props.photos.map((photo, index) => {
+        return <Photo key={index} title={photo.title} image={photo.image} />;
+     });
+    } else {
+      output = <div>Get ready to see some photos...</div>;
+    }
+    
     return (
       <React.Fragment>
         <SearchForm userSearch={this.userSearch} />
-        <Photo />
+        <ul className="photo-list">
+          {output}
+        </ul>
       </React.Fragment>
     );
   }
 }
 
-export default connect()(Board);
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    photos: state.photos
+  }
+}
+
+
+export default connect(mapStateToProps)(Board);

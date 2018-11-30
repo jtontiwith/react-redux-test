@@ -14,11 +14,9 @@ export default function SearchForm(props) {
   }
   
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" className="search-input" ref={(input) => { textInput = input }} aria-label="Seach and image" />
-      <div>
-        <button className="button">Search</button>
-      </div>
+    <form className="search-form" onSubmit={onSubmit}>
+      <input type="text" className="search-input" ref={(input) => { textInput = input }} aria-label="Seach and image" placeHolder="search flicker by tag..." />
+      <button className="button">SEARCH</button>
     </form>
   );
 }
@@ -40,6 +38,9 @@ Other decisions or thoughts
     unconnected "dumb components" to display UI and connected "smart
     components" responsible for composing non-connected componets, so 
     based on that it makes sense to keep SearchForm unconnected
+
+  -from where should I dispatch actions, ok from the method or should 
+  it go inside a lifecycle method
 
 
 

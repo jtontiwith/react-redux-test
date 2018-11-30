@@ -1,15 +1,16 @@
 import * as actions from '../Actions';
 
 const initialState = {
-  userSearchInput: 'cats'
-  //images: ['example image 1', 'example image 2']
+  userSearchInput: null,
+  photos: []
 }
 
 export const appReducer = (state=initialState, action) => {
-  console.log('hola')
-  if (action.type === actions.USER_SEARCH) {
-    console.log('oi')
-    return Object.assign({}, state, {userSearchInput: action.searchText})  
+  if (action.type === actions.API_RESULT) {
+    console.log('we running in here')
+    return Object.assign({}, state, {
+      userSearchInput: action.searchText,
+      photos: action.photos})
   }
   return state;
 };

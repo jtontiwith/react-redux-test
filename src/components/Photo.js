@@ -3,6 +3,11 @@ import './Photo.css';
 
 export default function Photo(props) {
   return (
-    <p>This is where the photos will go</p>
+    <li className="photo-list-item">
+      <figure>
+        <figcaption>{props.title}</figcaption>
+        <img src={props.image} alt={props.title}/>
+      </figure>
+    </li>
   );
 }
